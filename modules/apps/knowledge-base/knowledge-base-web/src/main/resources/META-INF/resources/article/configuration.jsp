@@ -37,15 +37,28 @@ kbArticlePortletInstanceConfiguration = ParameterMapUtil.setParameterMap(KBArtic
 			<c:if test='<%= tabsNames.contains("general") %>'>
 				<liferay-ui:section>
 					<div class="container-fluid-1280">
-						<aui:fieldset-group markupView="lexicon">
+						<aui:fieldset-group>
 							<aui:fieldset>
-								<div class="form-group kb-field-wrapper">
+								<div class="form-group input-append">
+									<div class="form-group">
+										<aui:field-wrapper label="article">
+											<%
+											String title = StringPool.BLANK;
 
-									<%
-									KBArticle kbArticle = KBArticleServiceUtil.fetchLatestKBArticle(kbArticlePortletInstanceConfiguration.resourcePrimKey(), WorkflowConstants.STATUS_APPROVED);
-									%>
+											KBArticle kbArticle = KBArticleServiceUtil.fetchLatestKBArticle(kbArticlePortletInstanceConfiguration.resourcePrimKey(), WorkflowConstants.STATUS_APPROVED);
 
-									<aui:input label="article" name="configurationKBArticle" type="resource" value="<%= (kbArticle != null) ? kbArticle.getTitle() : StringPool.BLANK %>" />
+											if (kbArticle != null) {
+													title = kbArticle.getTitle();
+												}
+											%>
+
+											<liferay-ui:input-resource
+												id="configurationKBArticle"
+												title="<%= title %>"
+												url="<%= title %>"
+											/>
+										</aui:field-wrapper>
+									</div>
 
 									<aui:button name="selectKBArticleButton" value="select" />
 								</div>
