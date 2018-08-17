@@ -39,38 +39,31 @@ kbArticlePortletInstanceConfiguration = ParameterMapUtil.setParameterMap(KBArtic
 					<div class="container-fluid-1280">
 						<aui:fieldset-group>
 							<aui:fieldset>
-								<div class="form-group input-append">
-									<div class="form-group">
-										<aui:field-wrapper label="article">
-											<%
-											String title = StringPool.BLANK;
+								<div class="form-group">
 
-											KBArticle kbArticle = KBArticleServiceUtil.fetchLatestKBArticle(kbArticlePortletInstanceConfiguration.resourcePrimKey(), WorkflowConstants.STATUS_APPROVED);
+									<%
+									String title = StringPool.BLANK;
 
-											if (kbArticle != null) {
-													title = kbArticle.getTitle();
-												}
-											%>
+									KBArticle kbArticle = KBArticleServiceUtil.fetchLatestKBArticle(kbArticlePortletInstanceConfiguration.resourcePrimKey(), WorkflowConstants.STATUS_APPROVED);
 
-											<liferay-ui:input-resource
-												id="configurationKBArticle"
-												title="<%= title %>"
-												url="<%= title %>"
-											/>
-										</aui:field-wrapper>
-									</div>
+									if (kbArticle != null) {
+											title = kbArticle.getTitle();
+										}
+									%>
+
+									<aui:input label="article" name="configurationKBObject" type="resource" value="<%= title %>" />
 
 									<aui:button name="selectKBArticleButton" value="select" />
 								</div>
-							</aui:fieldset>
-						</aui:fieldset-group>
+							</liferay-frontend:fieldset>
+						</liferay-frontend:fieldset-group>
 					</div>
 				</liferay-ui:section>
 			</c:if>
 
 			<liferay-ui:section>
 				<div class="container-fluid-1280">
-					<aui:fieldset-group markupView="lexicon">
+					<aui:fieldset-group>
 						<aui:fieldset>
 							<aui:input label="enable-description" name="preferences--enableKBArticleDescription--" type="checkbox" value="<%= kbArticlePortletInstanceConfiguration.enableKBArticleDescription() %>" />
 
