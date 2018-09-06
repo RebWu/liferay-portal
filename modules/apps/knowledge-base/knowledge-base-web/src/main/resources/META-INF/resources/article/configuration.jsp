@@ -55,8 +55,8 @@ kbArticlePortletInstanceConfiguration = ParameterMapUtil.setParameterMap(KBArtic
 
 									<aui:button name="selectKBArticleButton" value="select" />
 								</div>
-							</liferay-frontend:fieldset>
-						</liferay-frontend:fieldset-group>
+							</aui:fieldset>
+						</aui:fieldset-group>
 					</div>
 				</liferay-ui:section>
 			</c:if>
